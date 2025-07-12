@@ -1,5 +1,5 @@
 export function generateReadmeFileContent(className: string, lowerCasedName: string): string {
-    return `
+  return `
   # ${className}
 
   ${className} description.

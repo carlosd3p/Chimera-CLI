@@ -1,5 +1,5 @@
 export function generateIntegrationFileContent(className: string): string {
-    return `
+  return `
   import type { Options } from '../../types/integration/options';
   import type { Step1BuildRequestOptions, Step1ExecuteOptions } from './types';
   import type { ParseResponseOptions, RawResponse } from '../../types/integration/integration';

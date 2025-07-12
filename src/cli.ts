@@ -20,7 +20,9 @@ export function parseCliArgs(args: string[]): CliOptions {
 }
 
 export function printHelp() {
-  console.log(`ℹ️ Usage: chimera-cli create sync --name=<integration_name> --path=<optional relative/path>`);
+  console.log(
+    `ℹ️ Usage: chimera-cli create sync --name=<integration_name> --path=<optional relative/path>`,
+  );
 }
 
 export function printInvalidCommand() {
