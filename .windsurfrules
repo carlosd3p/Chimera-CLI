@@ -1,0 +1,24 @@
+# 🧠 LLM Context Instructions: Build a Deno CLI Scaffold Tool
+
+## 🛠️ Project Purpose
+You are building a **Deno CLI tool** that scaffolds TypeScript-based projects, similar to how Angular CLI or NestJS CLI works. The tool should help developers quickly generate:
+- Project boilerplate
+- Modules
+- Services
+- Controllers
+- SQL Migration Files
+- Config files
+- Testing structure
+- Execute other scripts
+
+## 🧱 Core Requirements
+- ✅ Use the **latest stable version** of [**Deno**](https://deno.land/manual)
+- ✅ Language: **TypeScript**
+- ✅ Follow Deno’s standard project structure and best practices
+- ✅ Modular, maintainable, and well-documented code
+- ✅ Support for custom templates (optional)
+- ✅ Easily extensible via plugins or commands
+- ✅ When you need to install dependencies use `deno add` command and prefer installing from `jsr` registry when possible, and then add it in the `deno.json` file [**more info**](https://docs.deno.com/runtime/fundamentals/node/)
+- ✅ When importing libraries from npm or node core modules use the `npm:` prefix
+- ✅ Use imports like `import { join } from "@std/path";` for Deno std and jsr packages, relying on the imports map in deno.json
+- Never use direct URL imports for std or jsr packages.
