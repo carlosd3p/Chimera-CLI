@@ -1,18 +1,32 @@
 import { join } from "@std/path";
 import { isPascalCase } from "@ntnyq/uncase";
-import { generateIntegrationFileContent, generateReadmeFileContent, generateRequestsFileContent, generateSandboxFileContent, generateTestFileContent, generateTypesFileContent, generateZodSchemaFileContent } from "./generators/index.ts";
+import {
+  generateIntegrationFileContent,
+  generateReadmeFileContent,
+  generateRequestsFileContent,
+  generateSandboxFileContent,
+  generateTestFileContent,
+  generateTypesFileContent,
+  generateZodSchemaFileContent,
+} from "./generators/index.ts";
 
 export async function createIntegration(name: string, path: string) {
   const integrationDir = join(path, name);
   const className = name;
   const lowerCasedName = name.toLowerCase();
   const integrationFilePath = join(integrationDir, `${lowerCasedName}.ts`);
-  const typesFilePath = join(integrationDir, 'types.ts');
-  const readmeFilePath = join(integrationDir, 'README.md');
-  const requestsFilePath = join(integrationDir, 'lib/requests.ts');
-  const sandboxFilePath = join(integrationDir, 'lib/sandbox.ts');
-  const testsFilePath = join(integrationDir, `tests/${name.toLowerCase()}.test.ts`);
-  const zodSchemaFilePath = join('Chimera/zod-schemas', `${lowerCasedName}.ts`);
+  const typesFilePath = join(integrationDir, "types.ts");
+  const readmeFilePath = join(integrationDir, "README.md");
+  const requestsFilePath = join(integrationDir, "lib/requests.ts");
+  const sandboxFilePath = join(integrationDir, "lib/sandbox.ts");
+  const testsFilePath = join(
+    integrationDir,
+    `tests/${name.toLowerCase()}.test.ts`,
+  );
+  const zodSchemaFilePath = join(
+    "Chimera/zod-schemas",
+    `${lowerCasedName}.ts`,
+  );
 
   if (!isPascalCase(name)) {
     console.error("Invalid integration name. It must be in PascalCase.");
@@ -20,17 +34,29 @@ export async function createIntegration(name: string, path: string) {
   }
 
   await Deno.mkdir(integrationDir, { recursive: true });
-  await Deno.mkdir('Chimera/zod-schemas', { recursive: true });
-  await Deno.mkdir(join(integrationDir, 'lib'), { recursive: true });
-  await Deno.mkdir(join(integrationDir, 'tests'), { recursive: true });
+  await Deno.mkdir("Chimera/zod-schemas", { recursive: true });
+  await Deno.mkdir(join(integrationDir, "lib"), { recursive: true });
+  await Deno.mkdir(join(integrationDir, "tests"), { recursive: true });
 
   const integrationFileContent = generateIntegrationFileContent(className);
-  const typesFileContent = generateTypesFileContent(className, lowerCasedName);
-  const requestsFileContent = generateRequestsFileContent(className, lowerCasedName);
+  const typesFileContent = generateTypesFileContent(
+    className,
+    lowerCasedName,
+  );
+  const requestsFileContent = generateRequestsFileContent(
+    className,
+    lowerCasedName,
+  );
   const sandboxFileContent = generateSandboxFileContent(className);
-  const readmeFileContent = generateReadmeFileContent(className, lowerCasedName);
+  const readmeFileContent = generateReadmeFileContent(
+    className,
+    lowerCasedName,
+  );
   const testFileContent = generateTestFileContent(className, lowerCasedName);
-  const zodSchemaFileContent = generateZodSchemaFileContent(className, lowerCasedName);
+  const zodSchemaFileContent = generateZodSchemaFileContent(
+    className,
+    lowerCasedName,
+  );
 
   await Deno.writeTextFile(integrationFilePath, integrationFileContent);
   await Deno.writeTextFile(typesFilePath, typesFileContent);
@@ -39,5 +65,7 @@ export async function createIntegration(name: string, path: string) {
   await Deno.writeTextFile(readmeFilePath, readmeFileContent);
   await Deno.writeTextFile(testsFilePath, testFileContent);
   await Deno.writeTextFile(zodSchemaFilePath, zodSchemaFileContent);
-  console.log(`✅ Created: ${integrationFilePath}, don't forget to add the zod schema in the import/export inside zod-schemas/index.ts and the integration import the integration in the Chimera/integrations/index.js file`);
+  console.log(
+    `✅ Created: ${integrationFilePath}, don't forget to add the zod schema in the import/export inside zod-schemas/index.ts and the integration import the integration in the Chimera/integrations/index.js file`,
+  );
 }

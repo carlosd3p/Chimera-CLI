@@ -1,5 +1,5 @@
 export function generateRequestsFileContent(className: string, lowerCasedName: string): string {
-    return `
+  return `
   import type { MakeRequestOptions } from '../../../lib/requests/types';
   import type { Credentials, ${className}AsyncOperationResponse } from '../types';
   import { getAsyncOperationSandboxResponse } from './sandbox';

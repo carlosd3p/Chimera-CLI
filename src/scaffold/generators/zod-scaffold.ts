@@ -1,5 +1,5 @@
 export function generateZodSchemaFileContent(className: string, lowerCasedName: string): string {
-    return `
+  return `
   // @ts-strict
 
   import { z } from 'zod';

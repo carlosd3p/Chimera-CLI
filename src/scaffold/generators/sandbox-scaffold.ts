@@ -1,5 +1,5 @@
 export function generateSandboxFileContent(className: string): string {
-    return `
+  return `
   import type { ${className}AsyncOperationResponse } from '../types';
   import type { RequestResponse } from '../../../lib/requests/types';
 

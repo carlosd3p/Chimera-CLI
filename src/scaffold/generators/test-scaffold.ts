@@ -1,5 +1,5 @@
 export function generateTestFileContent(className: string, lowerCasedName: string): string {
-    return `
+  return `
   import type { SinonStub } from 'sinon';
   import type { Credentials, Step1BuildRequestOptions, Step1ExecuteOptions } from '../types';
   import type ${className} from '../${className}';

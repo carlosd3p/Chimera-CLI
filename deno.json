@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "tasks": {
     "dev": "deno run --watch src/main.ts",
+    "fmt:check": "deno fmt --check",
+    "fmt:fix": "deno fmt .",
     "script": "deno run --allow-write --allow-read src/main.ts",
     "build:apple": "deno compile --allow-write --allow-read --output=chimera-cli src/main.ts --target=aarch64-apple-darwin",
     "build:apple-x86": "deno compile --allow-write --allow-read --output=chimera-cli src/main.ts --target=x86_64-apple-darwin",
@@ -17,5 +19,11 @@
     "@std/flags": "jsr:@std/flags@^0.224.0",
     "@std/path": "jsr:@std/path@^1.1.1"
   },
-  "exports": {}
+  "exports": {},
+  "lint": {
+    "rules": {}
+  },
+  "fmt": {
+    "lineWidth": 100
+  }
 }
