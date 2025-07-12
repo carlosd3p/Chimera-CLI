@@ -1,5 +1,5 @@
 export function generateTypesFileContent(className: string, lowerCasedName: string): string {
-    return `
+  return `
   import type { Artifacts } from '../../types/integration/integration';
   import type { InferSchemaWithRequiredProps } from '../../types/schema';
   import type { ${lowerCasedName}Base } from '../../zod-schemas/${lowerCasedName}';
