@@ -4,11 +4,11 @@
   "tasks": {
     "dev": "deno run --watch src/main.ts",
     "script": "deno run --allow-write --allow-read src/main.ts",
-    "build:apple": "deno compile --allow-write --allow-read --output=chimera src/main.ts --target=aarch64-apple-darwin",
-    "build:apple-x86": "deno compile --allow-write --allow-read --output=chimera src/main.ts --target=x86_64-apple-darwin",
-    "build:linux": "deno compile --allow-write --allow-read --output=chimera src/main.ts --target=x86_64-unknown-linux-gnu",
-    "build:linux-arm": "deno compile --allow-write --allow-read --output=chimera src/main.ts --target=aarch64-unknown-linux-gnu",
-    "build:windows": "deno compile --allow-write --allow-read --output=chimera src/main.ts --target=x86_64-pc-windows-msvc"
+    "build:apple": "deno compile --allow-write --allow-read --output=chimera-cli src/main.ts --target=aarch64-apple-darwin",
+    "build:apple-x86": "deno compile --allow-write --allow-read --output=chimera-cli src/main.ts --target=x86_64-apple-darwin",
+    "build:linux": "deno compile --allow-write --allow-read --output=chimera-cli src/main.ts --target=x86_64-unknown-linux-gnu",
+    "build:linux-arm": "deno compile --allow-write --allow-read --output=chimera-cli src/main.ts --target=aarch64-unknown-linux-gnu",
+    "build:windows": "deno compile --allow-write --allow-read --output=chimera-cli src/main.ts --target=x86_64-pc-windows-msvc"
   },
   "imports": {
     "@ntnyq/uncase": "jsr:@ntnyq/uncase@^0.1.0",
