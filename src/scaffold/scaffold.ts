@@ -14,6 +14,8 @@ export async function createIntegration(name: string, path: string) {
   const integrationDir = join(path, name);
   const className = name;
   const lowerCasedName = name.toLowerCase();
+  const integrationDir = join(path, lowerCasedName);
+  const className = name;
   const integrationFilePath = join(integrationDir, `${lowerCasedName}.ts`);
   const typesFilePath = join(integrationDir, "types.ts");
   const readmeFilePath = join(integrationDir, "README.md");
