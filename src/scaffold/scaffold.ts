@@ -11,8 +11,6 @@ import {
 } from "./generators/index.ts";
 
 export async function createIntegration(name: string, path: string) {
-  const integrationDir = join(path, name);
-  const className = name;
   const lowerCasedName = name.toLowerCase();
   const integrationDir = join(path, lowerCasedName);
   const className = name;
@@ -60,13 +58,15 @@ export async function createIntegration(name: string, path: string) {
     lowerCasedName,
   );
 
-  await Deno.writeTextFile(integrationFilePath, integrationFileContent);
-  await Deno.writeTextFile(typesFilePath, typesFileContent);
-  await Deno.writeTextFile(requestsFilePath, requestsFileContent);
-  await Deno.writeTextFile(sandboxFilePath, sandboxFileContent);
-  await Deno.writeTextFile(readmeFilePath, readmeFileContent);
-  await Deno.writeTextFile(testsFilePath, testFileContent);
-  await Deno.writeTextFile(zodSchemaFilePath, zodSchemaFileContent);
+  await Promise.all([
+     Deno.writeTextFile(integrationFilePath, integrationFileContent),
+     Deno.writeTextFile(typesFilePath, typesFileContent),
+     Deno.writeTextFile(requestsFilePath, requestsFileContent),
+     Deno.writeTextFile(sandboxFilePath, sandboxFileContent),
+     Deno.writeTextFile(readmeFilePath, readmeFileContent),
+     Deno.writeTextFile(testsFilePath, testFileContent),
+     Deno.writeTextFile(zodSchemaFilePath, zodSchemaFileContent),
+  ]);
   console.log(
     `✅ Created: ${integrationFilePath}, don't forget to add the zod schema in the import/export inside zod-schemas/index.ts and the integration import the integration in the Chimera/integrations/index.js file`,
   );
