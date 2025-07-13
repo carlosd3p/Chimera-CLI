@@ -1,38 +1,37 @@
 export function generateReadmeFileContent(className: string, lowerCasedName: string): string {
   return `
-  # ${className}
+# ${className}
 
-  ${className} description.
+${className} description.
 
-  **API Version**: v1
+**API Version**: v1
 
-  - [${className} API Docs](https://developer.${lowerCasedName}.com/docs)
-  - [Notion Documentation](https://www.notion.so/alloy/${className})
+- [${className} API Docs](https://developer.${lowerCasedName}.com/docs)
+- [Notion Documentation](https://www.notion.so/alloy/${className})
 
-  ## Service Requirements
-  | Credential               | Required?         | Notes                                   |
-  | ------------------------ | ----------------- | --------------------------------------- |
-  |                          |                   |                                         |
+## Service Requirements
+| Credential               | Required?         | Notes                                   |
+| ------------------------ | ----------------- | --------------------------------------- |
+|                          |                   |                                         |
 
-  ### Client Payload
+### Client Payload
 
-  This section describes the structure and content of the information that the client must send to Alloy to get the results of the ${className} identity verification.
+This section describes the structure and content of the information that the client must send to Alloy to get the results of the ${className} identity verification.
 
-  #### **Payload Structure**
+#### **Payload Structure**
 
-  #### **Field Descriptions**
+#### **Field Descriptions**
 
-  #### **Payload Example**
+#### **Payload Example**
 
-  #### Validations and Constraints
+#### Validations and Constraints
 
-  ## Build Request (Cache)
+## Build Request (Cache)
 
-  - Validates required credentials.
-  - Maps payload to cache key.
+- Validates required credentials.
+- Maps payload to cache key.
 
-  ## Execute Flow
+## Execute Flow
 
-  ## Testing Guide
-  `;
+## Testing Guide`;
 }

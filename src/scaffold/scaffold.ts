@@ -21,7 +21,7 @@ export async function createIntegration(name: string, path: string) {
   const sandboxFilePath = join(integrationDir, "lib/sandbox.ts");
   const testsFilePath = join(
     integrationDir,
-    `tests/${name.toLowerCase()}.test.ts`,
+    `tests/${name.toLowerCase()}.spec.ts`,
   );
   const zodSchemaFilePath = join(
     "Chimera/zod-schemas",
@@ -59,13 +59,13 @@ export async function createIntegration(name: string, path: string) {
   );
 
   await Promise.all([
-     Deno.writeTextFile(integrationFilePath, integrationFileContent),
-     Deno.writeTextFile(typesFilePath, typesFileContent),
-     Deno.writeTextFile(requestsFilePath, requestsFileContent),
-     Deno.writeTextFile(sandboxFilePath, sandboxFileContent),
-     Deno.writeTextFile(readmeFilePath, readmeFileContent),
-     Deno.writeTextFile(testsFilePath, testFileContent),
-     Deno.writeTextFile(zodSchemaFilePath, zodSchemaFileContent),
+    Deno.writeTextFile(integrationFilePath, integrationFileContent),
+    Deno.writeTextFile(typesFilePath, typesFileContent),
+    Deno.writeTextFile(requestsFilePath, requestsFileContent),
+    Deno.writeTextFile(sandboxFilePath, sandboxFileContent),
+    Deno.writeTextFile(readmeFilePath, readmeFileContent),
+    Deno.writeTextFile(testsFilePath, testFileContent),
+    Deno.writeTextFile(zodSchemaFilePath, zodSchemaFileContent),
   ]);
   console.log(
     `✅ Created: ${integrationFilePath}, don't forget to add the zod schema in the import/export inside zod-schemas/index.ts and the integration import the integration in the Chimera/integrations/index.js file`,
