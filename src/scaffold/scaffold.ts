@@ -1,5 +1,5 @@
-import { join } from "@std/path";
-import { isPascalCase, getCaseConverter } from "@ntnyq/uncase";
+import { join } from '@std/path';
+import { getCaseConverter, isPascalCase } from '@ntnyq/uncase';
 import {
   generateIntegrationFileContent,
   generateReadmeFileContent,
@@ -8,35 +8,35 @@ import {
   generateTestFileContent,
   generateTypesFileContent,
   generateZodSchemaFileContent,
-} from "./generators/index.ts";
+} from './generators/index.ts';
 
 export async function createIntegration(name: string, path: string) {
   const lowerCasedName = name.toLowerCase();
   const integrationDir = join(path, lowerCasedName);
   const className = name;
   const integrationFilePath = join(integrationDir, `${className}.ts`);
-  const typesFilePath = join(integrationDir, "types.ts");
-  const readmeFilePath = join(integrationDir, "README.md");
-  const requestsFilePath = join(integrationDir, "lib/requests.ts");
-  const sandboxFilePath = join(integrationDir, "lib/sandbox.ts");
+  const typesFilePath = join(integrationDir, 'types.ts');
+  const readmeFilePath = join(integrationDir, 'README.md');
+  const requestsFilePath = join(integrationDir, 'lib/requests.ts');
+  const sandboxFilePath = join(integrationDir, 'lib/sandbox.ts');
   const testsFilePath = join(
     integrationDir,
     `tests/${getCaseConverter('camelCase')(name).output}.spec.ts`,
   );
   const zodSchemaFilePath = join(
-    "Chimera/zod-schemas",
+    'Chimera/zod-schemas',
     `${lowerCasedName}.ts`,
   );
 
   if (!isPascalCase(name)) {
-    console.error("Invalid integration name. It must be in PascalCase.");
+    console.error('Invalid integration name. It must be in PascalCase.');
     Deno.exit(1);
   }
 
   await Deno.mkdir(integrationDir, { recursive: true });
-  await Deno.mkdir("Chimera/zod-schemas", { recursive: true });
-  await Deno.mkdir(join(integrationDir, "lib"), { recursive: true });
-  await Deno.mkdir(join(integrationDir, "tests"), { recursive: true });
+  await Deno.mkdir('Chimera/zod-schemas', { recursive: true });
+  await Deno.mkdir(join(integrationDir, 'lib'), { recursive: true });
+  await Deno.mkdir(join(integrationDir, 'tests'), { recursive: true });
 
   const integrationFileContent = generateIntegrationFileContent(className);
   const typesFileContent = generateTypesFileContent(

@@ -1,4 +1,4 @@
-import { parseArgs } from "@std/cli/parse-args";
+import { parseArgs } from '@std/cli/parse-args';
 
 export interface CliOptions {
   create?: string;
@@ -12,9 +12,9 @@ export interface CliOptions {
 export function parseCliArgs(args: string[]): CliOptions {
   return parseArgs(args, {
     alias: {
-      create: "c",
-      name: "n",
-      path: "p",
+      create: 'c',
+      name: 'n',
+      path: 'p',
     },
   });
 }
