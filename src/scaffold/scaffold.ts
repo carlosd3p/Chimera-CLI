@@ -1,5 +1,5 @@
 import { join } from "@std/path";
-import { isPascalCase } from "@ntnyq/uncase";
+import { isPascalCase, getCaseConverter } from "@ntnyq/uncase";
 import {
   generateIntegrationFileContent,
   generateReadmeFileContent,
@@ -14,14 +14,14 @@ export async function createIntegration(name: string, path: string) {
   const lowerCasedName = name.toLowerCase();
   const integrationDir = join(path, lowerCasedName);
   const className = name;
-  const integrationFilePath = join(integrationDir, `${lowerCasedName}.ts`);
+  const integrationFilePath = join(integrationDir, `${className}.ts`);
   const typesFilePath = join(integrationDir, "types.ts");
   const readmeFilePath = join(integrationDir, "README.md");
   const requestsFilePath = join(integrationDir, "lib/requests.ts");
   const sandboxFilePath = join(integrationDir, "lib/sandbox.ts");
   const testsFilePath = join(
     integrationDir,
-    `tests/${name.toLowerCase()}.spec.ts`,
+    `tests/${getCaseConverter('camelCase')(name).output}.spec.ts`,
   );
   const zodSchemaFilePath = join(
     "Chimera/zod-schemas",

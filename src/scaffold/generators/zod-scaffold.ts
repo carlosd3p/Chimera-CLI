@@ -1,7 +1,5 @@
 export function generateZodSchemaFileContent(className: string, lowerCasedName: string): string {
   return `
-// @ts-strict
-
 import { z } from 'zod';
 import type { MetadataObject } from '../types/schema';
 
